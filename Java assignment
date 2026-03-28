@@ -1,0 +1,38 @@
+// Fibonacci - First 5 numbers
+let num1 = 0;
+let num2 = 1;
+
+for (let i = 1; i <= 5; i++) {
+    if (i === 1) {
+        console.log(num1);        // 0
+    } else if (i === 2) {
+        console.log(num2);        // 1
+    } else {
+        let next = num1 + num2;
+        console.log(next);        // 1, 2, 3
+        num1 = num2;
+        num2 = next;
+    }
+}
+
+
+// Grade Assignment
+let myScore = 85;   // ← Change this value to test different scores
+
+if (myScore > 90) {
+    console.log("A");
+} else if (myScore >= 80 && myScore <= 90) {
+    console.log("B");
+} else {
+    console.log("C");
+}
+
+// Number Triangle with loop
+for (let i = 1; i <= 10; i++) {
+    let line = "";
+    for (let j = 1; j <= i; j++) {
+        line += "2";
+    }
+    console.log(line);
+}
+
