@@ -1,0 +1,71 @@
+//html part 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-pop MBTI Twin </title>
+</head>
+<body>
+    <h1>Find Your K-Pop Idol Twin</h1>
+    <p>Enter your 4-letter MBTI to see which Idol matches your personality.</p>
+    <label>Your MBTI</label><br />
+    <input 
+    type="text"
+    id="user-mbti"
+    placeholder="e.g.,INFP"
+    maxlength="4"
+    /><br/><br/>
+
+<button id="button1">Find My Twin</button>
+
+<br/><br/>
+
+<strong>Your Idol Twin :</strong> <span id="Idol-result">None yet</span>
+<script src="functionscode.js">
+</script>
+</body>
+</html>
+
+//js code
+const getIdolMatch=(mbti)=>{
+    const type=mbti.toUpperCase();
+
+switch (type){
+    case "INTJ":
+        return "Ryujin (ITZY)";
+    case "INFP":
+        return "V (BTS)";
+    case "INFJ":
+        return "IU";
+    case "ENFP":
+        return "Danielle (NewJeans)";
+    case "ENTJ":
+        return "Key(SHINee)";
+    case "ESFJ":
+        return "Lisa(BLACKPINK)";
+    case "ISTP":
+        return "Haerin(NewJeans)";
+    case "ISFP":
+        return "JungKook(BTS)";
+    default:
+        return "A very unique Idol!(Data not found)"
+
+}
+};
+ 
+const updateUI =() =>{
+    const input = document.getElementById("user-mbti").value;
+
+    if (input.length<4){
+        document.getElementById("idol-result").textContent=
+           "Please enter 4 leters.";
+        return;
+    }
+
+    const idolName=getIdolMatch(input);
+    document.getElementById("idol-result").textContent=idolName;
+};
+
+document.getElementById("button1").addEventListener("click",updateUI);
