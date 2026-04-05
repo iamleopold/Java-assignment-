@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ChatBot AI</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+        crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+    <div class="container py-5">
+    <h2 class="mb-4">ChatBot</h2>
+    <h3 class="mb-5">DeepSeek-R1:8b</h3>
+    <div class="card">
+        <div class="card-body">
+            <div id="chat-box"
+            cLass="mb-3"
+            style="height: 300px; overflow-y: auto"
+        ></div>
+        <div class="input-group">
+    <input 
+        type="text"
+        id="user-input"
+        cLass="form-control"
+        placeholder="Type your prompt here... "
+    />
+    <button class="btn btn-primary" onclick="sendMessage()">
+        Send
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script>
+        async function sendMessage(){
+            const input = document.getElementById("user-input"); 
+            const message = input.value;
+            if (!message) return;
+
+            const chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<div><strong> You:</strong> ${message}</div>`;
+            console.log("Sending PROMPT");
+            console.log(message);
+
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {"Content-Type": "application/json" },
+                body: JSON.stringify({message }),
+            });
+
+            console.log("Receiving a response");
+
+            const data = await response.json();
+// chatBox.innerHTML += `<div><strong> You:</strong> $(data.response]</div>`;
+
+            chatBox.innerHTMl += `<div class="mb-3"> <strong class="text-primary">Bot:</strong: <div class="p-3 bg-white border rounded shadow-sm font-monospace" style="white-space: pre-wrap;font-size: 0.9rem;">$fdata.response)</div></div>`;
+console.log(data);
+input.value = "";
+        }
+</body>
+</html>
