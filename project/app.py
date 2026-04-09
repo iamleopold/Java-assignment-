@@ -1,4 +1,4 @@
-from flask import Flask, render template, request, jsonify
+import flask import Flask, render_template, request , jsonify
 import requests
 
 app = Flask(__name__)
@@ -8,11 +8,11 @@ MODEL_NAME = "deepseek-r1:8b"
 
 @app.route("/")
 def index():
-    return render template(" Index. htm.")
+    return render_template("index.html")
 
-@app.route("/chat", methods =[ "POST")
+@app.route("/chat", methods =["POST"])
 def chat():
-    user_input = request. json.get ("message")
+    user_input = request.json.get ("message")
     payload={
 "model": MODEL_NAME,
 "prompt": user_input,
