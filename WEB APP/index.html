@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizMaster Pro: Adaptive Learning Engine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>QuizMaster Pro</h1>
+                <span>Adaptive Learning Engine</span>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalScore">0</span>
+                    <span>Total Score</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="accuracy">0%</span>
+                    <span>Accuracy</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="streak">0</span>
+                    <span>Streak</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Screen -->
+            <div id="homeScreen" class="screen active">
+                <div class="welcome-card">
+                    <h2>Welcome to QuizMaster Pro!</h2>
+                    <p>Test your knowledge with our adaptive learning system that gets smarter as you improve.</p>
+                    <div class="category-buttons">
+                        <button class="category-btn" data-category="javascript">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </button>
+                        <button class="category-btn" data-category="html">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML/CSS</span>
+                        </button>
+                        <button class="category-btn" data-category="react">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </button>
+                    </div>
+                    <button id="practiceMode" class="practice-btn">
+                        <i class="fas fa-flask"></i>
+                        Practice Mode
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quizScreen" class="screen">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <span class="progress-text" id="progressText">Question 1/10</span>
+                </div>
+                
+                <div class="question-card">
+                    <div class="question-header">
+                        <h3 id="questionText">Loading question...</h3>
+                        <div class="difficulty-indicator" id="difficultyIndicator">
+                            <span class="difficulty easy">Easy</span>
+                        </div>
+                    </div>
+                    <div class="options" id="optionsContainer"></div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button id="prevBtn" class="control-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button id="nextBtn" class="control-btn primary">Next Question</button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="resultsScreen" class="screen">
+                <div class="results-container">
+                    <i class="fas fa-trophy trophy-icon"></i>
+                    <h2 id="resultsTitle">Amazing!</h2>
+                    <div class="score-display">
+                        <span class="final-score" id="finalScore">95%</span>
+                        <span class="score-label">Final Score</span>
+                    </div>
+                    <div class="results-stats">
+                        <div class="stat-item">
+                            <span class="stat-value" id="resultsCorrect">8</span>
+                            <span>Correct</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="resultsTotal">10</span>
+                            <span>Total</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="resultsStreak">5</span>
+                            <span>Best Streak</span>
+                        </div>
+                    </div>
+                    <button id="restartBtn" class="restart-btn">Take Another Quiz</button>
+                    <button id="shareBtn" class="share-btn">
+                        <i class="fas fa-share-alt"></i> Share Results
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Audio Context for sound effects -->
+    <audio id="correctSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcDjeO2/LDeSFnKHO8NqJNwgZaLvt559NEAxQp+PwtmMcD" type="audio/wav">
+    </audio>
+    <audio id="wrongSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRl4GAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcDjeO2/LDeSFnKHO8NqJNwgZaLvt559NEAxQp+PwtmMcD" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
